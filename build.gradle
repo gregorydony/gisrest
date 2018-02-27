@@ -5,14 +5,7 @@ apply plugin: 'idea'
 // war plugin
 // See: http://www.gradle.org/docs/current/userguide/war_plugin.html
 apply plugin: 'war'
-
-// jetty plugin
-// See: http://www.gradle.org/docs/current/userguide/jetty_plugin.html
-apply plugin: 'jetty'
-jettyRun {
-    reload = "automatic"
-    scanIntervalSeconds = 1
-}
+apply from: 'https://raw.github.com/akhikhl/gretty/master/pluginScripts/gretty.plugin'
 
 jar {
     baseName = 'gs-rest-service'
