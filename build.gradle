@@ -1,0 +1,38 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+
+// war plugin
+// See: http://www.gradle.org/docs/current/userguide/war_plugin.html
+apply plugin: 'war'
+
+// jetty plugin
+// See: http://www.gradle.org/docs/current/userguide/jetty_plugin.html
+apply plugin: 'jetty'
+jettyRun {
+    reload = "automatic"
+    scanIntervalSeconds = 1
+}
+
+jar {
+    baseName = 'gs-rest-service'
+    version =  '0.1.0'
+}
+
+repositories {
+    mavenCentral()
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+    // https://mvnrepository.com/artifact/javax.ws.rs/javax.ws.rs-api
+    compile group: 'javax.ws.rs', name: 'javax.ws.rs-api', version: '2.1'
+    // https://mvnrepository.com/artifact/org.glassfish.jersey.core/jersey-server
+    compile group: 'org.glassfish.jersey.core', name: 'jersey-server', version: '2.13'
+    // https://mvnrepository.com/artifact/org.glassfish.jersey.containers/jersey-container-servlet
+    compile group: 'org.glassfish.jersey.containers', name: 'jersey-container-servlet', version: '2.26'
+    // https://mvnrepository.com/artifact/org.glassfish.jersey.test-framework.providers/jersey-test-framework-provider-grizzly2
+    testCompile group: 'org.glassfish.jersey.test-framework.providers', name: 'jersey-test-framework-provider-grizzly2', version: '2.26'
+}
