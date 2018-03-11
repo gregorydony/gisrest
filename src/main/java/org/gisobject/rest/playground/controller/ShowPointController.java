@@ -1,4 +1,7 @@
-package org.gisobject.rest.playground;
+package org.gisobject.rest.playground.controller;
+
+import org.gisobject.rest.playground.Point;
+import org.gisobject.rest.playground.UnknownLocation;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -9,11 +12,17 @@ import javax.ws.rs.core.MediaType;
 /**
  * Created by GIS Object on 23/02/2018.
  */
-@Path("departments")
+@Path("points")
 public class ShowPointController {
 
+
     @GET
-    @Path("/showPoint/{name}")
+    public String get() {
+        return "toto";
+    }
+
+    @GET
+    @Path("showPoint/{name}")
     @Produces(MediaType.APPLICATION_JSON)
     public Point showCoordinates(@PathParam("name") String name) {
         if ("New York".equals(name)) {
