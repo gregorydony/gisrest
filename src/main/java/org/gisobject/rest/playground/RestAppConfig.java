@@ -7,6 +7,8 @@ public class RestAppConfig extends ResourceConfig {
     // Get a set of root resource and provider classes
 
     public RestAppConfig() {
-        packages("org.gisobject.rest.playground.controller");
+        packages("org.gisobject.rest.playground.controller",
+                "org.gisobject.rest.playground.geojson.consumer",
+                "org.gisobject.rest.playground.geojson.provider");
     }
 }

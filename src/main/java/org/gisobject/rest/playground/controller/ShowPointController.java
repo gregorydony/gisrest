@@ -1,7 +1,7 @@
 package org.gisobject.rest.playground.controller;
 
-import org.gisobject.rest.playground.Point;
 import org.gisobject.rest.playground.UnknownLocation;
+import org.gisobject.rest.playground.geometry.Point;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -21,14 +21,16 @@ public class ShowPointController {
         return "toto";
     }
 
+
     @GET
     @Path("showPoint/{name}")
     @Produces(MediaType.APPLICATION_JSON)
     public Point showCoordinates(@PathParam("name") String name) {
         if ("New York".equals(name)) {
-            return new Point(40.7142700, -74.0059700);
+            return Point.from(40.7142700, -74.0059700);
         } else {
             throw new UnknownLocation("Unable to find coordinates of " + name);
         }
     }
+
 }
