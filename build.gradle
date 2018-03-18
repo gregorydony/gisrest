@@ -5,7 +5,7 @@ apply plugin: 'idea'
 // war plugin
 // See: http://www.gradle.org/docs/current/userguide/war_plugin.html
 apply plugin: 'war'
-apply from: 'https://raw.github.com/akhikhl/gretty/master/pluginScripts/gretty.plugin'
+apply from: 'https://raw.github.com/gretty-gradle-plugin/gretty/master/pluginScripts/gretty.plugin'
 
 jar {
     baseName = 'gs-rest-service'
@@ -61,6 +61,8 @@ dependencies {
     compile group: 'javax.xml.bind', name: 'jaxb-api', version: '2.3.0'
     // https://mvnrepository.com/artifact/javax.inject/javax.inject
     compile group: 'javax.inject', name: 'javax.inject', version: '1'
+    // mandatory to use jersey with java 9
+    compile 'com.sun.activation:javax.activation:1.2.0'
     // https://mvnrepository.com/artifact/org.glassfish.jersey.test-framework.providers/jersey-test-framework-provider-grizzly2
     testCompile group: 'org.glassfish.jersey.test-framework.providers', name: 'jersey-test-framework-provider-grizzly2', version: '2.26'
 }
