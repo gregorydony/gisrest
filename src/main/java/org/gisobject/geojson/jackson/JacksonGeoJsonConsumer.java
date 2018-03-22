@@ -1,11 +1,10 @@
-package org.gisobject.geojson.consumer.jackson;
+package org.gisobject.geojson.jackson;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectReader;
-import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fasterxml.jackson.databind.node.ArrayNode;
-import org.gisobject.geojson.consumer.GeoJsonConsumer;
+import org.gisobject.geojson.GeoJsonConsumer;
 import org.gisobject.rest.playground.geometry.Point;
 
 import java.math.BigDecimal;

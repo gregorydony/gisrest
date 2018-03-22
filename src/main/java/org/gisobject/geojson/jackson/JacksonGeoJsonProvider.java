@@ -1,16 +1,11 @@
-package org.gisobject.geojson.provider.jackson;
+package org.gisobject.geojson.jackson;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
-import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
-import org.gisobject.geojson.provider.GeoJsonProvider;
+import org.gisobject.geojson.GeoJsonProvider;
 import org.gisobject.rest.playground.geometry.Point;
-
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.math.BigDecimal;
 
 public class JacksonGeoJsonProvider implements GeoJsonProvider<JsonNode> {
 

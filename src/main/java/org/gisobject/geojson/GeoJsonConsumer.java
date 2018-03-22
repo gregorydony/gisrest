@@ -1,4 +1,4 @@
-package org.gisobject.geojson.consumer;
+package org.gisobject.geojson;
 
 import org.gisobject.rest.playground.geometry.Point;
 

@@ -3,10 +3,8 @@ package org.gisobject.rest.playground.geojson.consumer;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectReader;
-import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fasterxml.jackson.databind.node.ArrayNode;
-import org.gisobject.geojson.consumer.GeoJsonConsumer;
-import org.gisobject.geojson.consumer.jackson.JacksonGeoJsonConsumer;
+import org.gisobject.geojson.jackson.JacksonGeoJsonConsumer;
 import org.gisobject.rest.playground.geometry.Point;
 
 import javax.ws.rs.WebApplicationException;

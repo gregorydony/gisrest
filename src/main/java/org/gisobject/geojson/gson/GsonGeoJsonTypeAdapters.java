@@ -1,17 +1,20 @@
-package org.gisobject.geojson.provider.gson;
+package org.gisobject.geojson.gson;
 
-import com.google.gson.*;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
 import com.google.gson.internal.bind.TypeAdapters;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import org.gisobject.geojson.provider.GeoJsonProvider;
 import org.gisobject.rest.playground.geometry.Point;
 
 import java.io.IOException;
+import java.util.Calendar;
 
-public class GsonGeoJsonProvider implements GeoJsonProvider<JsonElement> {
+public final class GsonGeoJsonTypeAdapters {
 
-    private Gson gson = new GsonBuilder().registerTypeAdapter(Point.class, new TypeAdapter<Point>() {
+    public static final TypeAdapter<Point> POINT = new TypeAdapter<Point>() {
         @Override
         public void write(JsonWriter out, Point value) throws IOException {
             JsonArray jsonCoordinates = new JsonArray(2);
@@ -30,10 +33,10 @@ public class GsonGeoJsonProvider implements GeoJsonProvider<JsonElement> {
             JsonArray jsonCoordinates = jsonObject.getAsJsonArray("coordinates");
             return Point.of(jsonCoordinates.get(0).getAsBigDecimal(), jsonCoordinates.get(0).getAsBigDecimal());
         }
-    }).create();
+    };
 
-    @Override
-    public JsonElement fromPoint(Point point) {
-        return gson.toJsonTree(point);
+    private GsonGeoJsonTypeAdapters() {
+        throw new UnsupportedOperationException("Illegal constructor");
     }
 }
+
