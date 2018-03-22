@@ -3,6 +3,7 @@ package org.gisobject.rest.playground.geometry.impl;
 import org.gisobject.rest.playground.geometry.Point;
 
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.Objects;
 
 public abstract class AbstractPoint implements Point {
@@ -12,12 +13,20 @@ public abstract class AbstractPoint implements Point {
     private final BigDecimal y;
 
     protected AbstractPoint(BigDecimal x, BigDecimal y) {
-        this.x = x;
-        this.y = y;
+        this.x = safeInstance(x);
+        this.y = safeInstance(y);
+    }
+
+
+    private static BigDecimal safeInstance(BigDecimal val) {
+        if (val.getClass() != BigDecimal.class) {
+            throw new IllegalArgumentException("BigDecimal cannot be extended with " + val.getClass());
+        }
+        return val;
     }
 
     protected AbstractPoint(double x, double y) {
-        this(new BigDecimal(x),new BigDecimal(y));
+        this(new BigDecimal(Double.toString(x)),new BigDecimal(Double.toString(y)));
     }
 
     @Override

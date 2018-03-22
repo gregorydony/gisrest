@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import org.gisobject.rest.playground.geometry.Point;
+import org.gisobject.rest.playground.geometry.impl.BasePoint;
 
 import javax.ws.rs.Produces;
 import javax.ws.rs.WebApplicationException;
@@ -25,7 +26,7 @@ public final class PointMessageBodyWriter implements MessageBodyWriter<Point> {
 
     @Override
     public boolean isWriteable(Class<?> type, Type genericType, Annotation[] annotations, MediaType mediaType) {
-        return type == Point.class;
+        return type == BasePoint.class;
     }
 
     /**

@@ -27,7 +27,7 @@ public class ShowPointController {
     @Produces(MediaType.APPLICATION_JSON)
     public Point showCoordinates(@PathParam("name") String name) {
         if ("New York".equals(name)) {
-            return Point.from(40.7142700, -74.0059700);
+            return Point.of(40.7142700, -74.0059700);
         } else {
             throw new UnknownLocation("Unable to find coordinates of " + name);
         }

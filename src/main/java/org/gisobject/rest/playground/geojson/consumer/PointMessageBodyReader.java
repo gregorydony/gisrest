@@ -5,6 +5,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectReader;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fasterxml.jackson.databind.node.ArrayNode;
+import org.gisobject.geojson.consumer.GeoJsonConsumer;
+import org.gisobject.geojson.consumer.jackson.JacksonGeoJsonConsumer;
 import org.gisobject.rest.playground.geometry.Point;
 
 import javax.ws.rs.WebApplicationException;
@@ -23,6 +25,8 @@ public class PointMessageBodyReader implements MessageBodyReader<Point> {
 
     private ObjectReader objectReader = new ObjectMapper().reader();
 
+    private JacksonGeoJsonConsumer jacksonGeoJsonConsumer = new JacksonGeoJsonConsumer();
+
     @Override
     public boolean isReadable(Class<?> type, Type genericType, Annotation[] annotations, MediaType mediaType) {
         return type == Point.class;
@@ -35,9 +39,10 @@ public class PointMessageBodyReader implements MessageBodyReader<Point> {
     }
 
     private Point fromGeoJson(JsonNode jsonNode) {
+        Point.from(jsonNode, jacksonGeoJsonConsumer::toPoint);
         ArrayNode arrayNode = (ArrayNode)jsonNode.path("coordinates");
         BigDecimal x = new BigDecimal(arrayNode.get(0).asText());
         BigDecimal y = new BigDecimal(arrayNode.get(1).asText());
-        return Point.from(x,y);
+        return Point.of(x,y);
     }
 }
